@@ -1,6 +1,8 @@
 const navPageLinks = document.querySelectorAll('.nav-page');
 const pages = document.querySelectorAll('.content-center');
 
+const popup = document.getElementById('popup');
+const backdoorMusic = document.getElementById('backdoor-music');
 const dmToggle = document.getElementById('dm-tgl');
 const body = document.body;
 const panelToggles = document.querySelectorAll('.panel-toggle');
@@ -82,6 +84,19 @@ widgetContent.addEventListener('click', () => {
     }
 });
 
-dmToggle.addEventListener('click', function() {
-    body.classList.toggle('dark-mode');
-});
+if (popup) {
+    popup.addEventListener('click', function() {
+        alert('eqev}Ё@х╦╢f·q@Ёftt@╦w╢@╤iw@q@buo');
+    });
+}
+
+if (backdoorMusic) {
+    backdoorMusic.volume = 0.25;
+    backdoorMusic.play().catch(() => {});
+}
+
+if (dmToggle) {
+    dmToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+    });
+}
