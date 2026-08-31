@@ -12,6 +12,7 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.4;
+    overflow-x: hidden;
     transition: 0.3s;
 }
 
@@ -36,6 +37,10 @@ body.dark-mode .logo-text {
     background-color: #e0e4ee;
 }
 
+body.dark-mode .widget-txt{
+    background-color: #e0e4ee;
+}
+
 /* Container Utama */
 .container {
     width: 1024px;
@@ -47,6 +52,7 @@ body.dark-mode .logo-text {
 /* Header */
 header {
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .logo-text {
@@ -153,10 +159,17 @@ header {
 
 .column {
     flex: 1;
+    min-width: 0;
     background-color: #eeeae0;
     padding: 12px;
     border: 1px solid #d3cbbd;
-    max-height: 500px;
+}
+
+.column h2,
+.column p,
+.column a,
+.column td {
+    overflow-wrap: anywhere;
 }
 
 .column h2 {
@@ -188,6 +201,7 @@ header {
 
 .project-table table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
 }
 
@@ -290,10 +304,19 @@ header {
 .topics-content {
     font-size: 12px;
     line-height: 1.5;
+    color: #000;
+    opacity: 1;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .topics-content p {
     margin: 0 0 10px 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .box {
@@ -355,6 +378,17 @@ header {
     display: block;
 }
 
+.widget-txt{
+    width: auto;
+    min-height: 35px;
+    background-color: #eeeae0;
+    display: flex;
+    border: 1px solid #d3cbbd;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 .widget-box {
     width: 100%;
     min-height: 120px;
@@ -387,6 +421,31 @@ header {
     background-color: #d3cbbd;
     color: #000000;
     
+}
+
+.tip-toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    max-width: min(280px, calc(100vw - 32px));
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.5;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.tip-toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Footer */
@@ -505,6 +564,7 @@ footer {
 
     .column {
         width: 100%;
+        min-width: 0;
         max-height: none;
     }
 

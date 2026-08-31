@@ -19,6 +19,8 @@
             <div class="header-banner"><img src="img/m200.jpg" alt="Banner"></div>
         </header>
         
+        <hr style="border:0; border-top:1px solid #ccc; border-bottom:1px solid #ccc;">
+
         <div class="main-layout">
             <nav class="nav-left is-collapsed">
                 <button class="panel-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
@@ -28,33 +30,48 @@
                 <ul id="site-navigation">
                     <li><a href="#" class="nav-page active" data-page="pg1">HOME</a></li>
                     <li><a href="#" class="nav-page" data-page="pg2">About</a></li>
-                    <li><a href="#" class="nav-page" data-page="pg6">Contact</a></li>  
-                    <li><a href="#" class="nav-page" data-page="pg5">!Attention!</a></li>  
+                    <li><a href="#" class="nav-page" data-page="pg5">Contact</a></li>  
+                    <li><a href="#" class="nav-page" data-page="pg6">!Attention!</a></li>  
                 </ul>
             </nav>
 
             <aside class="sidebar-right is-collapsed">
                 <button class="panel-toggle" type="button" aria-expanded="false" aria-controls="site-widgets">
                     <span class="burger-icon" aria-hidden="true">☰</span>
-                    <span>WIDGETS</span>
+                    <span>Widget</span>
                 </button>
                 <div id="site-widgets" class="widget-content">
+                    <div class="widget-txt">
+                        <p style="font-weight: bold; font-size: medium;">Widget</p>
+                    </div>
+
+                    <hr style="border:0; border-top:1px solid #ccc; margin:10px 0;">
+
                     <div class="widget-box"><p style="font-weight:bold; font-size: medium">Darkmode / Lightmode</p>
                         <div class="toggle">
-                            <button id="dm-tgl">Toggle</button>
+                            <button id="dm-tgl">Switch</button>
                         </div>
                     </div>
-                    <div class="widget-box">WIDGET</div>
+                    <div class="widget-box"><p style="font-weight: bold; font-size: medium;">i'm feeling lucky</p>
+                        <div class="toggle">
+                            <button id="popups">Try Roll</button>
+                        </div>
+                    </div>
                 </div>
             </aside>
 
-            <div id="pg1" class="content-center active-page">
+            <audio id="fronttheme" preload="auto" autoplay loop>
+                <source src="audio/Beyond the Stars.mp3" type="audio/mpeg">
+            </audio>
+
+            <div id="pg1" class="content-center active-page" style="border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
                 
 
                 <div class="column">
                     <h2>Hei there</h2>
                     <div class="topics-content">
-                        <p><strong>■ No Need to be Formal,Just Call Me х╦╢f·q</strong><br>
+                        <p>
+                            <strong>■ No Need to be Formal,Just Call Me х╦╢f·q</strong><br>
 
                             <hr style="border:0; border-top:1px solid #ccc; margin:10px 0;">
                             
@@ -103,7 +120,7 @@
                                     <img src="img/zeta.jpeg" alt="pic 3">
                                     <a href="backdoor.html"> 
                                         <img src="img/alice.jpg" alt="pic 4">
-                                        <!-- target="_blank" buat new tab -->
+                                        <!-- target="_blank" = new tab -->
                                     </a>                         
                                     <!-- duplicate img no 1 -->
                                     <img src="img/Arknights.jpg" alt="pic 1 Dup">
@@ -137,15 +154,21 @@
 -->
             <div id="pg5" class="content-center">
                 <div class="column">
-                    <h2>Attention</h2>
-                    <p>This Website is under heavy construction because im very lazy and don't have any idea that cross in my mind most of the moment.</p>
+                    <h2>Contact</h2>
+                    <p>Contact me through : <br>
+                        <ol style="list-style: disc;">
+                            <li>Gmail : <a href="mailto:hyueriwaslost@gmail.com" style="text-decoration: none;">message me here</a> </li>
+                            <li>Instagram : <a href="https://instagram.com" target="_blank">Kunjungi Instagram Kami</a>
+</li>
+                        </ol>
+                    </p>
                 </div>
             </div>
 
             <div id="pg6" class="content-center">
                 <div class="column">
-                    <h2>Contact</h2>
-                    <p>Contact information goes here.</p>
+                    <h2>Attention</h2>
+                    <p>This Website is under heavy construction because im very lazy and don't have any idea that cross in my mind most of the moment.</p>
                 </div>
             </div>
 

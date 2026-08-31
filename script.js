@@ -2,8 +2,10 @@ const navPageLinks = document.querySelectorAll('.nav-page');
 const pages = document.querySelectorAll('.content-center');
 
 const popup = document.getElementById('popup');
+const fronttheme = document.getElementById('fronttheme')
 const backdoorMusic = document.getElementById('backdoor-music');
 const dmToggle = document.getElementById('dm-tgl');
+const popnotif = document.getElementById('popups');
 const body = document.body;
 const panelToggles = document.querySelectorAll('.panel-toggle');
 const floatingPanels = document.querySelectorAll('.nav-left, .sidebar-right');
@@ -12,6 +14,40 @@ const navToggle = navPanel.querySelector('.panel-toggle');
 const widgetPanel = document.querySelector('.sidebar-right');
 const widgetContent = widgetPanel.querySelector('.widget-content');
 const widgetToggle = widgetPanel.querySelector('.panel-toggle');
+
+const tipMessages = [
+    'Tip: go and try Phigros, underrated game that are fantastic.',
+    'Tip: La Li Lu Le Lo, La Li Lu Le Lo, La Li Lu Le Lo.',
+    'Tip: What you saw is not supposed what you believe.',
+    'Tip: ...There is no point i running away, so i came back,..',
+    'Tip: Why not try to sleep early??',
+    'Tip: KYS',
+    'Quotes: Its La Peace',
+    'Quotes: Chasing dream beyond the stars'
+
+];
+
+function showRandomTip() {
+    const toast = document.getElementById('tip-toast') || document.createElement('div');
+    const randomTip = tipMessages[Math.floor(Math.random() * tipMessages.length)];
+
+    toast.id = 'tip-toast';
+    toast.className = 'tip-toast';
+    toast.textContent = randomTip;
+
+    if (!toast.parentNode) {
+        document.body.appendChild(toast);
+    }
+
+    toast.classList.remove('show');
+    void toast.offsetWidth;
+    toast.classList.add('show');
+
+    clearTimeout(showRandomTip.timeoutId);
+    showRandomTip.timeoutId = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2200);
+}
 
 panelToggles.forEach(toggle => {
     toggle.addEventListener('click', () => {
@@ -86,8 +122,13 @@ widgetContent.addEventListener('click', () => {
 
 if (popup) {
     popup.addEventListener('click', function() {
-        alert('eqev}Ё@х╦╢f·q@Ёftt@╦w╢@╤iw@q@buo');
+        showRandomTip();
     });
+}
+
+if (fronttheme) {
+    fronttheme.volume = 0.25;
+    fronttheme.play().catch(() => {});
 }
 
 if (backdoorMusic) {
@@ -98,5 +139,11 @@ if (backdoorMusic) {
 if (dmToggle) {
     dmToggle.addEventListener('click', function() {
         body.classList.toggle('dark-mode');
+    });
+}
+
+if (popnotif) {
+    popnotif.addEventListener('click', function() {
+        showRandomTip();
     });
 }
