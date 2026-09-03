@@ -461,6 +461,11 @@ header {
     transform: translateY(0);
 }
 
+.archive-image-toast {
+    right: auto;
+    left: 24px;
+}
+
 .now-playing-toast {
     position: fixed;
     top: 18px;

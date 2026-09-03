@@ -2,6 +2,7 @@ const navPageLinks = document.querySelectorAll('.nav-page');
 const pages = document.querySelectorAll('.content-center');
 const secretNavItem = document.querySelector('.secret-nav-item');
 const secretTrigger = document.querySelector('.slider2 a[href="archive.html"]');
+const archiveImageTrigger = document.querySelector('.slider2 img[src="img/m200(1).jpg"]');
 const exitNavItem = document.querySelector('.exit-nav-item');
 
 const popup = document.querySelector('.popup');
@@ -30,6 +31,16 @@ const tipMessages = [
     'Quotes: Its La Peace',
     'Quotes: Chasing dream beyond the stars'
 
+];
+
+const archiveImageMessages = [
+    'Oh, you found something? no? well, keep looking.',
+    'damn it, didnt i tell you not to be stupid?',
+    'Check everything, there might be a clue hidden somewhere.',
+    'There might be a clue hidden somewhere, just start looking.',
+    'Stay calm, dont panic.',
+    'make it quick, im not a babysitter.',
+    'im here to help you as best as i could, but you have to do most of the work',
 ];
 
 nowPlayingToast.className = 'now-playing-toast';
@@ -97,6 +108,28 @@ function showRandomTip() {
 
     clearTimeout(showRandomTip.timeoutId);
     showRandomTip.timeoutId = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3200);
+}
+
+function showArchiveImageMessage() {
+    const toast = document.getElementById('archive-image-toast') || document.createElement('div');
+    const randomMessage = archiveImageMessages[Math.floor(Math.random() * archiveImageMessages.length)];
+
+    toast.id = 'archive-image-toast';
+    toast.className = 'tip-toast archive-image-toast';
+    toast.textContent = randomMessage;
+
+    if (!toast.parentNode) {
+        document.body.appendChild(toast);
+    }
+
+    toast.classList.remove('show');
+    void toast.offsetWidth;
+    toast.classList.add('show');
+
+    clearTimeout(showArchiveImageMessage.timeoutId);
+    showArchiveImageMessage.timeoutId = setTimeout(() => {
         toast.classList.remove('show');
     }, 3200);
 }
@@ -187,6 +220,13 @@ if (secretTrigger) {
             revealSecretNav();
             return;
         }
+    });
+}
+
+if (archiveImageTrigger) {
+    archiveImageTrigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        showArchiveImageMessage();
     });
 }
 
