@@ -1,12 +1,17 @@
 const navPageLinks = document.querySelectorAll('.nav-page');
 const pages = document.querySelectorAll('.content-center');
+const secretNavItem = document.querySelector('.secret-nav-item');
+const secretTrigger = document.querySelector('.slider2 a[href="archive.html"]');
+const exitNavItem = document.querySelector('.exit-nav-item');
 
-const popup = document.getElementById('popup');
-const fronttheme = document.getElementById('fronttheme')
-const backdoorMusic = document.getElementById('backdoor-music');
+const popup = document.querySelector('.popup');
+const poppass = document.getElementById('poppass');
+const fronttheme = document.getElementById('fronttheme');
+const archiveMusic = document.getElementById('archive-music');
 const dmToggle = document.getElementById('dm-tgl');
 const popnotif = document.getElementById('popups');
 const body = document.body;
+const nowPlayingToast = document.createElement('div');
 const panelToggles = document.querySelectorAll('.panel-toggle');
 const floatingPanels = document.querySelectorAll('.nav-left, .sidebar-right');
 const navPanel = document.querySelector('.nav-left');
@@ -27,6 +32,53 @@ const tipMessages = [
 
 ];
 
+nowPlayingToast.className = 'now-playing-toast';
+nowPlayingToast.innerHTML = '<span class="now-playing-label">NOW PLAYING</span><span class="now-playing-title">Unknown track</span>';
+document.body.appendChild(nowPlayingToast);
+
+function revealSecretNav() {
+    if (!secretNavItem) return;
+
+    secretNavItem.classList.remove('hidden-secret');
+    secretNavItem.classList.add('visible-secret');
+
+    if (document.querySelector('.secret-link')) {
+        document.querySelector('.secret-link').setAttribute('href', '404.html');
+    }
+}
+
+function showNowPlayingToast(trackTitle) {
+    const trackText = nowPlayingToast.querySelector('.now-playing-title');
+
+    if (trackText) {
+        trackText.textContent = trackTitle;
+    }
+
+    nowPlayingToast.classList.remove('show');
+    void nowPlayingToast.offsetWidth;
+    nowPlayingToast.classList.add('show');
+
+    clearTimeout(showNowPlayingToast.timeoutId);
+    showNowPlayingToast.timeoutId = setTimeout(() => {
+        nowPlayingToast.classList.remove('show');
+    }, 2600);
+}
+
+function bindAudioToast(audioElement, fallbackTitle) {
+    if (!audioElement) return;
+
+    const trackTitle = audioElement.dataset.trackLabel || fallbackTitle || 'Unknown track';
+    audioElement.dataset.trackLabel = trackTitle;
+
+    audioElement.addEventListener('play', () => {
+        showNowPlayingToast(trackTitle);
+    });
+
+    audioElement.addEventListener('pause', () => {
+        nowPlayingToast.classList.remove('show');
+    });
+}
+
 function showRandomTip() {
     const toast = document.getElementById('tip-toast') || document.createElement('div');
     const randomTip = tipMessages[Math.floor(Math.random() * tipMessages.length)];
@@ -46,7 +98,7 @@ function showRandomTip() {
     clearTimeout(showRandomTip.timeoutId);
     showRandomTip.timeoutId = setTimeout(() => {
         toast.classList.remove('show');
-    }, 2200);
+    }, 3200);
 }
 
 panelToggles.forEach(toggle => {
@@ -102,6 +154,10 @@ function switchPage(targetPageId) {
 
 navPageLinks.forEach(link => {
     link.addEventListener('click', (e) => {
+        if (link.classList.contains('secret-link')) {
+            return;
+        }
+
         e.preventDefault();
         const targetPage = link.dataset.page;
         switchPage(targetPage);
@@ -120,21 +176,60 @@ widgetContent.addEventListener('click', () => {
     }
 });
 
+if (secretTrigger) {
+    let secretClickCount = 0;
+    secretTrigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        secretClickCount += 1;
+
+        if (secretClickCount >= 5) {
+            sessionStorage.setItem('errorEntryToken', 'true');
+            revealSecretNav();
+            return;
+        }
+    });
+}
+
 if (popup) {
     popup.addEventListener('click', function() {
-        showRandomTip();
+        alert('Цif·f@qБ@vw@ФbХ@wДЁ');
+    });
+}
+
+if (poppass) {
+    poppass.addEventListener('click', () => {
+        const password = window.prompt('Ёif@sf╦@Ёw@╦w╢·@f╚dbxfk@q╚@·qhiЁ@q@g·wvЁ@wg@╦w╢:');
+
+        if (password === 'wonderland') {
+            if (exitNavItem) {
+                exitNavItem.classList.remove('hidden-secret');
+                exitNavItem.classList.add('visible-secret');
+            }
+        } else if (password !== null) {
+            window.alert('iwФ@Дvgw·ЁДvbЁf');
+        }
     });
 }
 
 if (fronttheme) {
+    fronttheme.dataset.trackLabel = 'Aphasia';
+    bindAudioToast(fronttheme, 'Aphasia');
     fronttheme.volume = 0.25;
-    fronttheme.play().catch(() => {});
+    fronttheme.play().then(() => {
+        showNowPlayingToast(fronttheme.dataset.trackLabel);
+    }).catch(() => {});
 }
 
-if (backdoorMusic) {
-    backdoorMusic.volume = 0.25;
-    backdoorMusic.play().catch(() => {});
+if (archiveMusic) {
+    archiveMusic.dataset.trackLabel = 'btqdf@qv@тqБbvЁi·wxf';
+    bindAudioToast(archiveMusic, 'btqdf@qv@тqБbvЁi·wxf');
+    archiveMusic.volume = 0.25;
+    archiveMusic.play().then(() => {
+        showNowPlayingToast(archiveMusic.dataset.trackLabel);
+    }).catch(() => {});
 }
+
+
 
 if (dmToggle) {
     dmToggle.addEventListener('click', function() {

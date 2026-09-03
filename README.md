@@ -1,11 +1,11 @@
-Ver 0.0.531 Prototype
+Ver 0.0.7 Prototype
 
 Added :
-- Rework on some button
-- added backsound (placeholder)
-- r╢╚Ё@b@dwx╦xb╚Ёf
-  
+- lock feature
+- more JS 
+- error page 
+- ?????
 
-Next :
-- remove backdoor
-- ????????????
+removed :
+- backdoor.html
+- 

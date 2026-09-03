@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>х╦╢f·q Personal Website</title>
+    <title>Hyueri Personal Website</title>
+    <script>
+        function enforceArchiveLock() {
+            if (sessionStorage.getItem('archiveLocked') === 'true') {
+                window.location.replace('archive.html');
+            }
+        }
+
+        enforceArchiveLock();
+        window.addEventListener('pageshow', enforceArchiveLock);
+    </script>
     <link rel="icon" type="image/jpg" href="img/slide2.png" alt="favicon">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -12,7 +22,7 @@
 
     <div class="container">
         <div class="logo-text">
-            <h5>х╦╢f·q <span style="font-size:12px; font-family:sans-serif; font-weight:normal;">Personal Website</span></h5>
+            <h5>Hyueri <span style="font-size:12px; font-family:sans-serif; font-weight:normal;">Personal Website</span></h5>
         </div>
 
         <header>
@@ -31,7 +41,8 @@
                     <li><a href="#" class="nav-page active" data-page="pg1">HOME</a></li>
                     <li><a href="#" class="nav-page" data-page="pg2">About</a></li>
                     <li><a href="#" class="nav-page" data-page="pg5">Contact</a></li>  
-                    <li><a href="#" class="nav-page" data-page="pg6">!Attention!</a></li>  
+                    <li><a href="#" class="nav-page" data-page="pg6">!Attention!</a></li>
+                    <li class="secret-nav-item hidden-secret"><a href="404.html" class="nav-page secret-link">Ё·ДЁi</a></li>
                 </ul>
             </nav>
 
@@ -61,7 +72,7 @@
             </aside>
 
             <audio id="fronttheme" preload="auto" autoplay loop>
-                <source src="audio/Beyond the Stars.mp3" type="audio/mpeg">
+                <source src="audio/Aphasia.mp3" type="audio/mpeg">
             </audio>
 
             <div id="pg1" class="content-center active-page" style="border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
@@ -71,16 +82,16 @@
                     <h2>Hei there</h2>
                     <div class="topics-content">
                         <p>
-                            <strong>■ No Need to be Formal,Just Call Me х╦╢f·q</strong><br>
+                            <strong>■ No Need to be Formal,Just Call Me Hyueri</strong><br>
 
                             <hr style="border:0; border-top:1px solid #ccc; margin:10px 0;">
                             
-                            this is a personal website of х╦╢f·q, this website still in under construction, because im lazy. Feel free to explore but don't even try to do something stupid, im not hiding anything y'know..
+                            this is a personal website of Hyueri, this website still in under construction, because im lazy. Feel free to explore but don't even try to do something stupid, im not hiding anything y'know..
                         </p>
                         
                         <hr style="border:0; border-top:1px solid #ccc; margin:10px 0;">
                         <div class="box">
-                            <p style="font-weight:bold; margin-bottom:5px;">This is х╦╢f·q</p>
+                            <p style="font-weight:bold; margin-bottom:5px;">This is Hyueri</p>
                             <div class="profile-pic">
                                 <img src="img/slide3.png" alt="Profile Picture">
                             </div>
@@ -118,7 +129,7 @@
                                     <img src="img/Arknights.jpg" alt="pic 1">
                                     <img src="img/miku.jpeg" alt="pic 2">
                                     <img src="img/zeta.jpeg" alt="pic 3">
-                                    <a href="backdoor.html"> 
+                                    <a href="archive.html"> 
                                         <img src="img/alice.jpg" alt="pic 4">
                                         <!-- target="_blank" = new tab -->
                                     </a>                         
@@ -134,7 +145,7 @@
             <div id="pg2" class="content-center">
                 <div class="column">
                     <h2>About</h2>
-                    <p>About content goes here.</p>
+                    <p>Information about me is off limits. There's no reason for you to know me more than this.</p>
                 </div> 
             </div>
 <!--
@@ -147,8 +158,8 @@
 
             <div id="pg4" class="content-center">
                 <div class="column">
-                    <h2>Goods</h2>
-                    <p>Goods information goes here.</p>
+                    <h2>Ё·ДЁi</h2>
+                        <button id="popups" a href="archive.html">Ё·ДЁi</button>
                 </div>
             </div>
 -->
@@ -157,8 +168,8 @@
                     <h2>Contact</h2>
                     <p>Contact me through : <br>
                         <ol style="list-style: disc;">
-                            <li>Gmail : <a href="mailto:hyueriwaslost@gmail.com" style="text-decoration: none;">message me here</a> </li>
-                            <li>Instagram : <a href="https://instagram.com" target="_blank">Kunjungi Instagram Kami</a>
+                            <li>Gmail : <a href="mailto:hyueriwaslost@gmail.com" style="text-decoration: none;">Email me</a> </li>
+                            <li>Instagram : <a href="https://instagram.com" target="_blank">Instagram</a>
 </li>
                         </ol>
                     </p>
@@ -175,7 +186,7 @@
         </div>
 
         <footer>
-            Copyright © 20?? ---------- All Rights Reserved.
+            Copyright © 2026 Hyueri. All Rights Reserved.
         </footer>
     </div>
 
