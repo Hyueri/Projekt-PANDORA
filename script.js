@@ -20,6 +20,7 @@ const navToggle = navPanel.querySelector('.panel-toggle');
 const widgetPanel = document.querySelector('.sidebar-right');
 const widgetContent = widgetPanel.querySelector('.widget-content');
 const widgetToggle = widgetPanel.querySelector('.panel-toggle');
+let passwordAccepted = false;
 
 const tipMessages = [
     'Tip: go and try Phigros, underrated game that are fantastic.',
@@ -238,13 +239,20 @@ if (popup) {
 
 if (poppass) {
     poppass.addEventListener('click', () => {
+        if (passwordAccepted) {
+            window.alert('NICE WORK LAD, NOW GET OUT OF HERE');
+            return;
+        }
+
         const password = window.prompt('Ёif@sf╦@Ёw@╦w╢·@f╚dbxfk@q╚@·qhiЁ@q@g·wvЁ@wg@╦w╢:');
 
         if (password === 'wonderland') {
+            passwordAccepted = true;
             if (exitNavItem) {
                 exitNavItem.classList.remove('hidden-secret');
                 exitNavItem.classList.add('visible-secret');
             }
+            window.alert('NICE, NOW GET OUT OF HERE');
         } else if (password !== null) {
             window.alert('iwФ@Дvgw·ЁДvbЁf');
         }
