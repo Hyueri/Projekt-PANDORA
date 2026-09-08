@@ -16,6 +16,58 @@ body {
     transition: 0.3s;
 }
 
+/* Shown by the browser only when JavaScript is disabled. */
+.javascript-required {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.javascript-required__dialog {
+    width: min(440px, 100%);
+    padding: 28px;
+    border: 1px solid #111;
+    background: #f7f3eb;
+    color: #000;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.javascript-required__dialog h1 {
+    margin: 0 0 14px;
+    font-size: 24px;
+}
+
+.javascript-required__dialog p {
+    margin: 0 0 24px;
+    line-height: 1.6;
+}
+
+.javascript-required__actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.javascript-required__button {
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px 16px;
+    border: 1px solid #111;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.javascript-required__button:hover {
+    background: #e5e5e5;
+}
+
 /*darkmode*/
 body.dark-mode {
     background-color: #0e121a;

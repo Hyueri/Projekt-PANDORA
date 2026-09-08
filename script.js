@@ -38,7 +38,7 @@ const archiveImageMessages = [
     'Oh, you found something? no? well, keep looking.',
     'damn it, didnt i tell you not to be stupid?',
     'Check everything, there might be a clue hidden somewhere.',
-    'There might be a clue hidden somewhere, just start looking.',
+    'Stop wasting time.',
     'Stay calm, dont panic.',
     'make it quick, im not a babysitter.',
     'im here to help you as best as i could, but you have to do most of the work',
@@ -240,7 +240,7 @@ if (popup) {
 if (poppass) {
     poppass.addEventListener('click', () => {
         if (passwordAccepted) {
-            window.alert('NICE WORK LAD, NOW GET OUT OF HERE');
+            window.alert('WHAT ARE YOU WAITING FOR? GET YOUR ARSE OUTTA HERE');
             return;
         }
 
@@ -252,7 +252,7 @@ if (poppass) {
                 exitNavItem.classList.remove('hidden-secret');
                 exitNavItem.classList.add('visible-secret');
             }
-            window.alert('NICE, NOW GET OUT OF HERE');
+            window.alert('NICE WORK, NOW GET OUT OF HERE');
         } else if (password !== null) {
             window.alert('iwФ@Дvgw·ЁДvbЁf');
         }

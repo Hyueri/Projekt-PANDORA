@@ -56,6 +56,7 @@
             margin-top: 26px;
             padding-top: 16px;
             border-top: 1px solid #111111;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         .hidden-line {
@@ -73,9 +74,33 @@
             max-height: 80px;
             margin: 10px 0;
         }
+
+        .hidden-line.typing::after {
+            content: '_';
+            animation: cmdCursor 0.8s steps(2, start) infinite;
+        }
+
+        @keyframes cmdCursor {
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <noscript>
+        <div class="javascript-required" role="dialog" aria-labelledby="javascript-required-title">
+            <div class="javascript-required__dialog">
+                <h1 id="javascript-required-title">JavaScript Needed</h1>
+                <p>Hey, you must turn on the JavaScript or this site won't work properly.</p>
+                <div class="javascript-required__actions">
+                    <a class="javascript-required__button" href="">Refresh</a>
+                    <a class="javascript-required__button" href="https://youtu.be/dQw4w9WgXcQ?si=NfV3vbnehRjabfDT">Exit</a>
+                </div>
+            </div>
+        </div>
+    </noscript>
 
     <audio id="404msc" preload="auto" autoplay loop>
         <source src="audio/Result Failed.mp3" type="audio/mpeg">
@@ -85,13 +110,13 @@
         <h1>404 - Page Not Found</h1>
         <p>Sorry, the page you are looking for does not exist.</p>
         <p>How in the hell did you get in here? Quick, get out!</p>
-        <a href="index.html">RETURN</a>
+        <a href="index.html" style="text-decoration: none;">[RETURN]</a>
 
         <div class="delayed-content">
             <p class="hidden-line">...</p>
             <p class="hidden-line">Wait, something isn't right</p>
             <p class="hidden-line">Ёif@Ё·ДЁi@tqfБ@if·f</p>
-            <a id="archive-access" class="hidden-line" href="archive.html">[access]</a>
+            <a id="archive-access" class="hidden-line" href="archive.html" style="text-decoration: none;">[access]</a>
         </div>
     </div>
 
@@ -121,10 +146,28 @@
             errormsc.play().catch(() => {});
         }
 
+        function typeLine(line) {
+            const text = line.textContent;
+            let characterIndex = 0;
+
+            line.textContent = '';
+            line.classList.add('visible', 'typing');
+
+            const typingTimer = setInterval(() => {
+                line.textContent += text[characterIndex];
+                characterIndex += 1;
+
+                if (characterIndex >= text.length) {
+                    clearInterval(typingTimer);
+                    line.classList.remove('typing');
+                }
+            }, 55);
+        }
+
         setTimeout(() => {
             delayedLines.forEach((line, index) => {
                 setTimeout(() => {
-                    line.classList.add('visible');
+                    typeLine(line);
                 }, index * 10000);
             });
         }, 15000);
