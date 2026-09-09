@@ -45,7 +45,7 @@
                     <li><a href="#" class="nav-page" data-page="pg2">bбжДЦ</a></li>
                     <li><a href="#" class="nav-page" data-page="pg6">цжvЦbцЦ</a></li>  
                     <li><a href="#" class="nav-page" data-page="pg5">ФхХ</a></li>  
-                    <li class="exit-nav-item hidden-secret"><a id="exit-archive" href="index.html">exit</a></li>
+                    <li class="exit-nav-item hidden-secret"><a id="exit-archive" href="redirect.html">exit</a></li>
                 </ul>
             </nav>
 
@@ -112,7 +112,7 @@
                             <tr>
                                 <td class="date">????.??.??</td>
                                 <td>
-                                    <a href="img/noescape.jpg" download="mundane.jpg">
+                                    <a href="img/alice2.jpg" download="mundane.jpg">
                                         дwФvtwbe
                                     </a>
                                 </td>
@@ -120,7 +120,7 @@
                             <tr>
                                 <td class="date">????.??.??</td>
                                 <td>
-                                    <a href="img/noescape.jpg" download="mundane.jpg">
+                                    <a href="img/alice2.jpg" download="mundane.jpg">
                                         дwФvtwbe
                                     </a>
                                 </td>
@@ -128,7 +128,7 @@
                             <tr>
                                 <td class="date">????.??.??</td>
                                 <td>
-                                    <a href="img/noescape.jpg" download="mundane.jpg">
+                                    <a href="img/alice2.jpg" download="mundane.jpg">
                                         дwФvtwbe
                                     </a>
                                 </td>
@@ -136,7 +136,7 @@
                             <tr>
                                 <td class="date">????.??.??</td>
                                 <td>
-                                    <a href="img/noescape.jpg" download="mundane.jpg">
+                                    <a href="img/alice2.jpg" download="mundane.jpg">
                                         дwФvtwbe
                                     </a>
                                 </td>
@@ -144,7 +144,7 @@
                             <tr>
                                 <td class="date">????.??.??</td>
                                 <td>
-                                    <a href="img/noescape.jpg" download="mundane.jpg">
+                                    <a href="img/alice2.jpg" download="mundane.jpg">
                                         дwФvtwbe
                                     </a>
                                 </td>
@@ -152,7 +152,7 @@
                             <tr>
                                 <td class="date">????.??.??</td>
                                 <td>
-                                    <a href="img/noescape.jpg" download="mundane.jpg">
+                                    <a href="img/alice2.jpg" download="mundane.jpg">
                                         дwФvtwbe
                                     </a>
                                 </td>
@@ -211,7 +211,7 @@
             <div id="pg6" class="content-center">
                 <div class="column">
                     <h2>Trapped</h2>
-                    <p>what the.., you shouldn't be here. you need to leave, now.  Well, i can't leave or this web collapse. i'll help you to get out. You know where to find me</p>
+                    <p>what the.., you shouldn't be here. you need to leave, now.  I don't care how you got here, get out.</p>
                 </div>
             </div>
 
@@ -239,6 +239,7 @@
             exitArchive.addEventListener('click', () => {
                 sessionStorage.removeItem('archiveLocked');
                 sessionStorage.removeItem('archiveAccessGranted');
+                sessionStorage.setItem('redirectEntryToken', 'true');
             });
         }
     </script>

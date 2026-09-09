@@ -1,0 +1,8 @@
+File: archive_7306.log
+
+[03:19:51] MEMORY  :: sector 07 mounted
+[03:19:52] MEMORY  :: reading residual data
+[03:19:53] DATA    :: recovery sequence: der-07
+[03:19:54] ERROR   :: partial data loss detected
+[03:19:55] MEMORY  :: attempting reconstruction
+[03:19:56] STATUS  :: sector unmounted

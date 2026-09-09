@@ -1,0 +1,309 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the end???</title>
+    <style>
+        .overlay-glitch {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            overflow: hidden;
+            pointer-events: none;
+            padding: 10vh 8vw;
+            color: #f4f4f4;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255, 0, 70, 0.08) 0,
+                    rgba(255, 0, 70, 0.08) 2px,
+                    transparent 2px,
+                    transparent 5px
+                ),
+                #090909;
+            animation: vhsJitter 0.16s infinite steps(2, end);
+        }
+
+        .overlay-glitch::before {
+            content: '';
+            position: absolute;
+            inset: -10%;
+            pointer-events: none;
+        }
+
+        .overlay-glitch::before {
+            opacity: 0.34;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0,
+                    transparent 9px,
+                    rgba(0, 255, 255, 0.2) 10px,
+                    rgba(255, 0, 90, 0.22) 11px,
+                    transparent 13px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255, 0, 0, 0.08) 0,
+                    rgba(255, 0, 0, 0.08) 3px,
+                    transparent 3px,
+                    transparent 9px
+                );
+            mix-blend-mode: screen;
+            animation: vhsScanlines 0.24s infinite steps(3, end);
+        }
+
+        .overlay-glitch > * {
+            position: relative;
+            z-index: 1;
+            animation: glitchText 1.2s infinite steps(1, end);
+            text-shadow:
+                2px 0 rgba(255, 42, 109, 0.7),
+                -2px 0 rgba(5, 217, 232, 0.7);
+        }
+
+        @keyframes vhsJitter {
+            0%, 100% {
+                transform: translate(0);
+            }
+            25% {
+                transform: translate(-2px, 1px);
+            }
+            50% {
+                transform: translate(2px, -1px);
+            }
+            75% {
+                transform: translate(1px, 2px);
+            }
+        }
+
+        @keyframes vhsScanlines {
+            0% {
+                transform: translateY(-8px) skewX(1deg);
+            }
+            50% {
+                transform: translateY(6px) skewX(-1deg);
+            }
+            100% {
+                transform: translateY(-3px) skewX(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .overlay-glitch,
+            .overlay-glitch::before,
+            .overlay-glitch > * {
+                animation: none;
+            }
+        }
+
+        .delayed-content {
+            margin-top: 26px;
+            padding-top: 16px;
+            border-top: 1px solid #111111;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .glitchy {
+            position: relative;
+            display: inline-block;
+            animation: glitchText 1.2s infinite steps(1, end);
+        }
+
+        .glitchy::before,
+        .glitchy::after {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        .glitchy::before {
+            color: #ff2a6d;
+            animation: glitchRed 0.9s infinite steps(1, end);
+        }
+
+        .glitchy::after {
+            color: #05d9e8;
+            animation: glitchBlue 0.75s infinite steps(1, end);
+        }
+
+        @keyframes glitchText {
+            0%, 18%, 34%, 52%, 68%, 84%, 100% {
+                transform: none;
+            }
+            19% {
+                transform: skewX(12deg) translateX(-3px);
+            }
+            20% {
+                transform: translateX(4px) scaleX(1.03);
+            }
+            35% {
+                transform: skewX(-10deg) translateY(1px);
+            }
+            53% {
+                transform: translateX(-5px);
+            }
+            69% {
+                transform: skewX(8deg) scaleX(0.98);
+            }
+            85% {
+                transform: none;
+            }
+        }
+
+        @keyframes glitchRed {
+            0%, 12%, 26%, 40%, 54%, 68%, 82%, 100% {
+                clip-path: inset(0 0 100% 0);
+                transform: translate(0);
+            }
+            13% {
+                clip-path: inset(10% 0 65% 0);
+                transform: translate(-5px, 1px);
+            }
+            27% {
+                clip-path: inset(55% 0 20% 0);
+                transform: translate(4px, -1px);
+            }
+            41% {
+                clip-path: inset(25% 0 45% 0);
+                transform: translate(-4px, 1px);
+            }
+            55% {
+                clip-path: inset(70% 0 5% 0);
+                transform: translate(5px, -1px);
+            }
+            69% {
+                clip-path: inset(5% 0 75% 0);
+                transform: translate(-3px, 1px);
+            }
+        }
+
+        @keyframes glitchBlue {
+            0%, 8%, 22%, 36%, 50%, 64%, 78%, 92%, 100% {
+                clip-path: inset(100% 0 0 0);
+                transform: translate(0);
+            }
+            9% {
+                clip-path: inset(40% 0 30% 0);
+                transform: translate(5px, -1px);
+            }
+            23% {
+                clip-path: inset(5% 0 80% 0);
+                transform: translate(-4px, 1px);
+            }
+            37% {
+                clip-path: inset(65% 0 10% 0);
+                transform: translate(4px, -1px);
+            }
+            51% {
+                clip-path: inset(20% 0 55% 0);
+                transform: translate(-5px, 1px);
+            }
+            65% {
+                clip-path: inset(50% 0 25% 0);
+                transform: translate(3px, -1px);
+            }
+            79% {
+                clip-path: inset(10% 0 70% 0);
+                transform: translate(-4px, 1px);
+            }
+            93% {
+                clip-path: inset(75% 0 5% 0);
+                transform: translate(5px, -1px);
+            }
+        }
+
+        .hidden-line {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+            max-height: 0;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .hidden-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 80px;
+            margin: 10px 0;
+        }
+
+        .hidden-line.typing::after {
+            content: '_';
+            animation: cmdCursor 0.8s steps(2, start) infinite;
+        }
+
+        @keyframes cmdCursor {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('redirectEntryToken') !== 'true') {
+                window.location.replace('index.html');
+                return;
+            }
+
+            const delayedLines = document.querySelectorAll('.hidden-line');
+            const endAudio = document.getElementById('end');
+
+            if (endAudio) {
+                endAudio.volume = 0.25;
+                endAudio.play().catch(() => {});
+            }
+
+            function typeLine(line) {
+                const text = line.textContent;
+                let characterIndex = 0;
+
+                line.textContent = '';
+                line.classList.add('visible', 'typing');
+
+                const typingTimer = setInterval(() => {
+                    line.textContent += text[characterIndex];
+                    characterIndex += 1;
+
+                    if (characterIndex >= text.length) {
+                        clearInterval(typingTimer);
+                        line.classList.remove('typing');
+                    }
+                }, 55);
+            }
+
+            Array.from(delayedLines).forEach((line, index) => {
+                setTimeout(() => {
+                    typeLine(line);
+                }, 20000 + (index * 8000));
+            });
+
+            setTimeout(() => {
+                sessionStorage.removeItem('redirectEntryToken');
+                window.location.replace('index.html');
+            }, 60000);
+        });
+    </script>
+</head>
+<body style="background-color: #090909;">
+    <audio id="end" preload="auto" autoplay loop>
+        <source src="audio/After-Altale.mp3" type="audio/mpeg">
+    </audio>
+    <div class="overlay-glitch">
+        <p class="glitchy" data-text="Redirecting ETA 1 minute ...">Redirecting ETA 1 minute ...</p>
+
+        <div class="delayed-content">
+
+            <p class="hidden-line">congrats, you just finished the puzzle</p>
+            <p class="hidden-line">...</p>
+            <p class="hidden-line">like i said in the beginning, i don't hide anything</p>
+            <p class="hidden-line">but your curiosity really are something</p>
+            <p class="hidden-line">return to home...</p>
+
+        </div>
+    </div>
+</body>
+</html>

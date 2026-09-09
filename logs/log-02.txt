@@ -1,0 +1,8 @@
+File: archive_4821.log
+
+[03:16:22] ACCESS  :: request received
+[03:16:23] ACCESS  :: source: archive/primary
+[03:16:24] DATA    :: node status: on
+[03:16:25] CORE    :: connection stable
+[03:16:26] STATUS  :: waiting for response
+[03:16:27] CORE    :: connection terminated

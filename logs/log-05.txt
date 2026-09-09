@@ -1,0 +1,8 @@
+File: archive_2608.log
+
+[03:27:44] SYSTEM  :: final sector discovered
+[03:27:45] DATA    :: node identifier: nd-05
+[03:27:46] ERROR   :: archive integrity unstable
+[03:27:47] SYSTEM  :: attempting final read
+[03:27:48] WARNING :: access restriction enabled
+[03:27:49] SYSTEM  :: archive locked
