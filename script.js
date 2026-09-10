@@ -5,8 +5,7 @@ const secretTrigger = document.querySelector('.slider2 a[href="archive.html"]');
 const archiveImageTrigger = document.querySelector('.slider2 img[src="img/m200(1).jpg"]');
 const exitNavItem = document.querySelector('.exit-nav-item');
 
-const popup = document.querySelector('.popup'); //butuh ini
-const corrupted = document.querySelector('.corrupt'); //butuh ini
+const popup = document.querySelector('.popup');
 const poppass = document.getElementById('poppass');
 const musicPlayers = document.querySelectorAll('#fronttheme, #archive-music');
 const isIndexPage = Boolean(document.getElementById('fronttheme'));
@@ -33,14 +32,15 @@ const logFiles = new Map([
     ['4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3', 2],
     ['a388f562e286fdf28986f9253579f4d096446e01dd0c771996a51ff11b390fa2', 3],
     ['0b73ac87e5b7b8aaf38929124133b4c7b4cbd41feed0eba7584493588c48fc14', 4],
-    ['1ce31ea41272f6e794c7cff80821fc30d577ed4c6425f99eab0bd505802406ab', 5]
+    ['1ce31ea41272f6e794c7cff80821fc30d577ed4c6425f99eab0bd505802406ab', 5],
+    ['fb3e2c0015ad5bcd60d7619ca575a56c15c5d2cd3f01f18e68c4dfaeee585db5', 6]
 ]);
 
 const tipMessages = [
     'Tip: go and try Phigros, underrated game that are fantastic.',
-    'Tip: La Li Lu Le Lo, La Li Lu Le Lo, La Li Lu Le Lo.',
+    'Quotes: La Li Lu Le Lo, La Li Lu Le Lo, La Li Lu Le Lo.',
     'Tip: What you saw is not supposed what you believe.',
-    'Tip: ...There is no point i running away, so i came back,..',
+    'Quotes: ...There is no point i running away, so i came back,..',
     'Tip: Why not try to sleep early??',
     'Tip: KYS',
     'Quotes: Its La Peace',
@@ -323,7 +323,7 @@ if (poppass) {
             return;
         }
 
-        const password = window.prompt('Ёif@sf╦@Ёw@╦w╢·@f╚dbxfk@q╚@·qhiЁ@q@g·wvЁ@wg@╦w╢:');
+        const password = window.prompt('Ёif@sf╦@Ёw@╦w╢·@f╚dbxfk@q╚@·qhiЁ@qv@g·wvЁ@wg@╦w╢:');
 
         if (password === null) {
             return;
@@ -335,9 +335,11 @@ if (poppass) {
             .map(byte => byte.toString(16).padStart(2, '0'))
             .join('');
 
-        const logNumber = logFiles.get(hash);
-        if (logNumber) {
-            const logFile = ['l', 'o', 'g', '-', String(logNumber).padStart(2, '0'), '.', 't', 'x', 't'].join('');
+        const logIdentifier = logFiles.get(hash);
+        if (logIdentifier) {
+            const logFile = logIdentifier === 6
+                ? `${password}.txt`
+                : ['l', 'o', 'g', '-', String(logIdentifier).padStart(2, '0'), '.', 't', 'x', 't'].join('');
             const downloadLink = document.createElement('a');
             downloadLink.href = `logs/${logFile}`;
             downloadLink.download = logFile;
@@ -385,8 +387,3 @@ if (popnotif) {
     });
 }
 
-if (corrupted) {
-    corrupted.addEventListener('click', function() {
-        alert('W-what have you done??, didnt i tell you to go back...');
-    });
-}

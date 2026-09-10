@@ -1,11 +1,5 @@
-Ver 0.0.7 Prototype
+Ver 0.1.12 Prototype
 
-Added :
-- lock feature
-- more JS 
-- error page 
-- ?????
+not a final, this is just a prototype. and always be
 
-removed :
-- backdoor.html
-- 
+- rework some text
