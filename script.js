@@ -315,7 +315,7 @@ if (popup) {
         alert('Цif·f@qБ@vw@ФbХ@wДЁ');
     });
 }
-
+ 
 if (poppass) {
     poppass.addEventListener('click', async () => {
         if (passwordAccepted) {
