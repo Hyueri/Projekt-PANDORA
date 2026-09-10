@@ -1,5 +1,8 @@
 const navPageLinks = document.querySelectorAll('.nav-page');
 const pages = document.querySelectorAll('.content-center');
+const typingParagraph = document.querySelector('#pg5 p');
+const typingText = typingParagraph?.textContent || '';
+let typingTimer;
 const secretNavItem = document.querySelector('.secret-nav-item');
 const secretTrigger = document.querySelector('.slider2 a[href="archive.html"]');
 const archiveImageTrigger = document.querySelector('.slider2 img[src="img/m200(1).jpg"]');
@@ -57,6 +60,24 @@ const archiveImageMessages = [
     'make it quick, im not a babysitter.',
     'im here to help you as best as i could, but you have to do most of the work',
 ];
+
+function applyRedirectCompletion() {
+    if (!isIndexPage || localStorage.getItem('redirectCompleted') !== 'true') {
+        return;
+    }
+
+    const sliderImageLink = document.querySelector('.slider2 a[href="archive.html"]');
+    const sliderImage = sliderImageLink?.querySelector('img[src="img/alice.jpg"]');
+    if (sliderImage) {
+        sliderImage.src = 'img/m200(1).jpg';
+        sliderImage.alt = 'pic 4';
+        sliderImageLink.replaceWith(sliderImage);
+    }
+
+    document.querySelector('.secret-nav-item a[href="404.html"]')?.closest('.secret-nav-item')?.remove();
+}
+
+applyRedirectCompletion();
 
 if (isIndexPage && savedDarkMode !== null) {
     body.classList.toggle('dark-mode', savedDarkMode === 'true');
@@ -247,6 +268,9 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 function switchPage(targetPageId) {
+    clearInterval(typingTimer);
+    typingParagraph?.classList.remove('typing-text');
+
     pages.forEach(page => {
         page.classList.remove('active-page');
     });
@@ -254,6 +278,22 @@ function switchPage(targetPageId) {
     const targetPage = document.getElementById(targetPageId);
     if (targetPage) {
         targetPage.classList.add('active-page');
+    }
+
+    if (targetPageId === 'pg5' && typingParagraph) {
+        let characterIndex = 0;
+        typingParagraph.textContent = '';
+        typingParagraph.classList.add('typing-text');
+
+        typingTimer = setInterval(() => {
+            typingParagraph.textContent += typingText[characterIndex];
+            characterIndex += 1;
+
+            if (characterIndex >= typingText.length) {
+                clearInterval(typingTimer);
+                typingParagraph.classList.remove('typing-text');
+            }
+        }, 35);
     }
 
     navPageLinks.forEach(link => {
@@ -386,4 +426,3 @@ if (popnotif) {
         showRandomTip();
     });
 }
-

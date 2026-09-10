@@ -251,9 +251,12 @@
 
             const delayedLines = document.querySelectorAll('.hidden-line');
             const endAudio = document.getElementById('end');
+            const redirectStatus = document.querySelector('.glitchy');
+            const redirectDuration = 60000;
+            const redirectStart = Date.now();
 
             if (endAudio) {
-                endAudio.volume = 0.30;
+                endAudio.volume = 0.45;
                 endAudio.play().catch(() => {});
             }
 
@@ -281,10 +284,34 @@
                 }, 20000 + (index * 8000));
             });
 
+            function updateRedirectStatus() {
+                const remainingSeconds = Math.ceil(
+                    Math.max(0, redirectDuration - (Date.now() - redirectStart)) / 1000
+                );
+                const eta = remainingSeconds <= 5
+                    ? '5 seconds'
+                    : remainingSeconds <= 30
+                        ? '30 seconds'
+                        : '1 minute';
+                const statusText = `Redirecting, ETA ${eta} ...`;
+
+                if (redirectStatus) {
+                    redirectStatus.textContent = statusText;
+                    redirectStatus.dataset.text = statusText;
+                }
+
+                if (remainingSeconds > 0) {
+                    setTimeout(updateRedirectStatus, 1000);
+                }
+            }
+
+            updateRedirectStatus();
+
             setTimeout(() => {
+                localStorage.setItem('redirectCompleted', 'true');
                 sessionStorage.removeItem('redirectEntryToken');
                 window.location.replace('index.html');
-            }, 60000);
+            }, redirectDuration);
         });
     </script>
 </head>
@@ -307,7 +334,7 @@
         <source src="audio/After-Altale.mp3" type="audio/mpeg">
     </audio>
     <div class="overlay-glitch">
-        <p class="glitchy" data-text="Redirecting ETA 1 minute ...">Redirecting ETA 1 minute ...</p>
+        <p class="glitchy" data-text="Redirecting, ETA 1 minute ...">Redirecting, ETA 1 minute ...</p>
 
         <div class="delayed-content">
 
