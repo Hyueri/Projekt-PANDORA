@@ -107,7 +107,7 @@
     </audio>
 
     <div class="error-shell">
-        <h1>404 - Page Not Found</h1>
+        <h1 id="error-title" role="button" tabindex="0" title="????????????">404 - Page Not Found</h1>
         <p>Sorry, the page you are looking for does not exist.</p>
         <p>How in the hell did you get in here? Quick, get out!</p>
         <a href="index.html" style="text-decoration: none;">[RETURN]</a>
@@ -115,6 +115,7 @@
         <div class="delayed-content">
             <p class="hidden-line">auto redirecting...</p>
             <p class="hidden-line">Wait, something isn't right</p>
+            <p class="hidden-line">YOU, what did you do??</p>
             <p class="hidden-line">tfЁБ@вtbХ@b@гbuf</p>
             <a id="archive-access" class="hidden-line" href="archive.html" style="text-decoration: none;">[access]</a>
         </div>
@@ -124,6 +125,9 @@
         const delayedLines = document.querySelectorAll('.hidden-line');
         const errormsc = document.getElementById('404msc');
         const archiveAccess = document.getElementById('archive-access');
+        const errorTitle = document.getElementById('error-title');
+        let redirectTimer;
+        let redirectCancelled = false;
 
         if (sessionStorage.getItem('archiveLocked') === 'true') {
             window.location.replace('archive.html');
@@ -164,10 +168,33 @@
             }, 55);
         }
 
+        function cancelAutoRedirect() {
+            redirectCancelled = true;
+            clearTimeout(redirectTimer);
+        }
+
+        if (errorTitle) {
+            errorTitle.addEventListener('click', cancelAutoRedirect);
+            errorTitle.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    cancelAutoRedirect();
+                }
+            });
+        }
+
         setTimeout(() => {
             delayedLines.forEach((line, index) => {
                 setTimeout(() => {
                     typeLine(line);
+
+                    if (index === 0) {
+                        redirectTimer = setTimeout(() => {
+                            if (!redirectCancelled) {
+                                window.location.replace('index.html');
+                            }
+                        }, 8000);
+                    }
                 }, index * 10000);
             });
         }, 15000);

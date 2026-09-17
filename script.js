@@ -1,8 +1,8 @@
 const navPageLinks = document.querySelectorAll('.nav-page');
 const pages = document.querySelectorAll('.content-center');
-const typingParagraph = document.querySelector('#pg5 p');
-const typingText = typingParagraph?.textContent || '';
-let typingTimer;
+const archiveTypingParagraph = document.querySelector('#pg5 p');
+const archiveTypingText = archiveTypingParagraph?.textContent || '';
+let archiveTypingTimer;
 const secretNavItem = document.querySelector('.secret-nav-item');
 const secretTrigger = document.querySelector('.slider2 a[href="archive.html"]');
 const archiveImageTrigger = document.querySelector('.slider2 img[src="img/m200(1).jpg"]');
@@ -27,7 +27,9 @@ const widgetToggle = widgetPanel.querySelector('.panel-toggle');
 let passwordAccepted = false;
 const indexTracks = [
     'audio/Aphasia.mp3',
-    'audio/寄明月.mp3'
+    'audio/寄明月.mp3',
+    'audio/Diamond Eyes.mp3',
+    'audio/初嵐.mp3'
 ];
 const k = 'a71a7c7011f53a1bab3642ec2ce12593f05230ace8de1e3e7645f69efac1443d';
 const logFiles = new Map([
@@ -96,6 +98,23 @@ function revealSecretNav() {
     if (document.querySelector('.secret-link')) {
         document.querySelector('.secret-link').setAttribute('href', '404.html');
     }
+
+    openNavigationBriefly();
+}
+
+function openNavigationBriefly() {
+    if (!window.matchMedia('(max-width: 700px)').matches || !navPanel || !navToggle) {
+        return;
+    }
+
+    navPanel.classList.remove('is-collapsed');
+    navToggle.setAttribute('aria-expanded', 'true');
+
+    clearTimeout(openNavigationBriefly.timeoutId);
+    openNavigationBriefly.timeoutId = setTimeout(() => {
+        navPanel.classList.add('is-collapsed');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }, 1000);
 }
 
 function showNowPlayingToast(trackTitle) {
@@ -131,7 +150,6 @@ function getTrackTitle(audioElement) {
     try {
         decodedFilename = decodeURIComponent(filename);
     } catch {
-        // Keep the original filename when the URL contains malformed encoding.
     }
 
     return decodedFilename.replace(/\.[^/.]+$/, '') || 'Unknown track';
@@ -268,8 +286,8 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 function switchPage(targetPageId) {
-    clearInterval(typingTimer);
-    typingParagraph?.classList.remove('typing-text');
+    clearInterval(archiveTypingTimer);
+    archiveTypingParagraph?.classList.remove('typing-text');
 
     pages.forEach(page => {
         page.classList.remove('active-page');
@@ -280,18 +298,18 @@ function switchPage(targetPageId) {
         targetPage.classList.add('active-page');
     }
 
-    if (targetPageId === 'pg5' && typingParagraph) {
+    if (!isIndexPage && targetPageId === 'pg5' && archiveTypingParagraph) {
         let characterIndex = 0;
-        typingParagraph.textContent = '';
-        typingParagraph.classList.add('typing-text');
+        archiveTypingParagraph.textContent = '';
+        archiveTypingParagraph.classList.add('typing-text');
 
-        typingTimer = setInterval(() => {
-            typingParagraph.textContent += typingText[characterIndex];
+        archiveTypingTimer = setInterval(() => {
+            archiveTypingParagraph.textContent += archiveTypingText[characterIndex];
             characterIndex += 1;
 
-            if (characterIndex >= typingText.length) {
-                clearInterval(typingTimer);
-                typingParagraph.classList.remove('typing-text');
+            if (characterIndex >= archiveTypingText.length) {
+                clearInterval(archiveTypingTimer);
+                archiveTypingParagraph.classList.remove('typing-text');
             }
         }, 35);
     }
@@ -395,6 +413,7 @@ if (poppass) {
                 exitNavItem.classList.remove('hidden-secret');
                 exitNavItem.classList.add('visible-secret');
             }
+            openNavigationBriefly();
             window.alert('NICE WORK, NOW GET OUT OF HERE');
         } else {
             window.alert('iwФ@Дvgw·ЁДvbЁf');
