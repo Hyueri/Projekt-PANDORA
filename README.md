@@ -1,7 +1,6 @@
-Ver 0.1.2 Prototype
+Ver 0.1.23 Prototype
 
 not a final, this is just a prototype, and always be
 
-- fix error  
-- noscript rework
-- add some more js
+- add more background audio
+- remove unused code
